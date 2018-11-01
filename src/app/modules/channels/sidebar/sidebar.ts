@@ -20,6 +20,7 @@ export class ChannelSidebar {
   isLocked: boolean = false;
   editing: boolean = false;
   user: MindsUser;
+  hoursActive: 0;
   searching;
   errorMessage: string = '';
   amountOfTags: number = 0;
@@ -34,7 +35,12 @@ export class ChannelSidebar {
     public client: Client,
     public upload: Upload,
     public session: Session,
-  ) {}
+  ) {
+      this.client.get('api/v2/howmanyhours')
+          .then((response: any) => {
+              this.hoursActive = response.hours;
+          });
+  }
 
   isOwner() {
     return this.session.getLoggedInUser().guid === this.user.guid;
