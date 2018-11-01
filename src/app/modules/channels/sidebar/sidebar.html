@@ -10,6 +10,7 @@
   </div>
   <div class="m-channel--username">
     <h2><span>@</span>{{user.username}}</h2>
+    <div>(Active for <strong>{{hoursActive}} hours</strong>!</div>
   </div>
   <div class="mdl-card__supporting-text" id="bio" [hidden]="editing" style="white-space:pre-line; text-align:center;" [innerHtml]="user.briefdescription | tags"></div>
 
